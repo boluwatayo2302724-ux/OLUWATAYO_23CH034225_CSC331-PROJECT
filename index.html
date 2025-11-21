@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSC331 Project 2 - LLM Q&A System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial; margin: 40px; background: #f4f7f9; }
+        .box { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        h1 { color: #1a73e8; text-align: center; }
+        textarea { width: 100%; padding: 15px; font-size: 16px; border: 2px solid #ddd; border-radius: 8px; }
+        button { background: #1a73e8; color: white; padding: 12px 30px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
+        .result { margin-top: 20px; padding: 15px; background: #e8f4fc; border-radius: 8px; }
+        .label { font-weight: bold; color: #1a73e8; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>CSC331 Project 2<br><small>NLP Question-Answering System</small></h1>
+
+    <form method="POST">
+        <p><strong>Your Question:</strong></p>
+        <textarea name="question" rows="4" placeholder="Ask anything..." required>{{ original or '' }}</textarea><br><br>
+        <button type="submit">Ask AI</button>
+    </form>
+
+    {% if processed %}
+    <div class="result">
+        <p><span class="label">Original:</span> {{ original }}</p>
+        <p><span class="label">Processed (cleaned & tokenized):</span> {{ processed }}</p>
+        <p><span class="label">AI Response:</span></p>
+        <p style="white-space: pre-wrap; background: white; padding: 15px; border-radius: 8px;">{{ answer }}</p>
+    </div>
+    {% endif %}
+
+    <hr>
+    <p style="text-align:center; color:#555; font-size:14px;">
+        <strong>Name:</strong> [Your Full Name]<br>
+        <strong>Matric No:</strong> [Your Matric No]<br>
+        <strong>LLM:</strong> Gemini-1.5-Flash via Google AI Studio (Free API)<br>
+        Powered by Flask + Gemini API
+    </p>
+</div>
+</body>
+</html>
